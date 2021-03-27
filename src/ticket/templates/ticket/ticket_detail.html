@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<style>
+    p,
+    span {
+        margin: 0;
+        padding: 0;
+    }
+
+    span {
+        font-weight: bold;
+        display: block;
+
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="container-sm">
+    <h2>Tickets</h2>
+    <div class="row">
+        <div class="border border-dark rounded my-1">
+            <div class="row">
+                <div class="col-8">
+                    <h3>{{ticketdetail.title}}</h3>
+                </div>
+                <div class="col-4">
+                    <p style="float:right;">by <span style="display: inline;">{{ticketdetail.author}}</span></p>
+                </div>
+            </div>
+            <span>Categorie: {{ticketdetail.category}}</span>
+            <span>Departament: {{ticketdetail.departament}}</span>
+            <div class="py-3"></div>
+            <em>Problema:</em>
+            <p class="pb-1">{{ticketdetail.content}}</p>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<style>
+    p, span {
+        margin: 0;
+        padding: 0;
+    }
+
+    span {
+        font-weight: bold;
+        display: block;
+
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    {% include 'navbar.html' %}
+    
+    <div class="container-sm">
+        <h1>Tickets</h1>
+        <div class="row">
+            {% for ticket in ticketlist %}
+            <div class="border border-dark rounded my-1">
+                <div class="row">
+                    <div class="col-8"><a href="{% url 'ticket:ticket_detail' ticket.slug %}" style="text-decoration: none; color: black;"><h3>{{ticket.title}}</h3></a></div>
+                    <div class="col-4"><p style="float:right;">by <span style="display: inline;">{{ticket.author}}</span></p></div>
+                </div>
+                <span>Categorie: {{ticket.category}}</span>
+                <span>Departament: {{ticket.departament}}</span>
+                <div class="py-3"></div>
+                <em>Problema:</em>
+                <p class="pb-1">{{ticket.content}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

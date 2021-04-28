@@ -16,15 +16,23 @@ DEPARTMENT_CHOICES = (
     ('Support', 'Support'),
 )
 
+STATUS_CHOICES = (
+    ('In asteptare', 'In asteptare'),
+    ('In lucru', 'In lucru'),
+    ('Terminate', 'Terminate'),
+)
+
 class Ticket(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=220, null=False, unique=True)
     author = models.CharField(max_length=300)
     category = models.CharField(max_length=30, choices=CATEGORY_CHOICES)
     departament = models.CharField(max_length=50, choices=DEPARTMENT_CHOICES)
+    status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='In asteptare')
     content = models.TextField(null=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
 
     def get_absolute_url(self):
         return reverse('ticket:ticket_detail', args=[self.slug])

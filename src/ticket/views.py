@@ -18,3 +18,5 @@ class TicketCreateView(CreateView):
     form_class = TicketForm
     template_name = 'ticket/ticket_create.html'
 
+
+

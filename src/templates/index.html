@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<style>
+    p,
+    span {
+        margin: 0;
+        padding: 0;
+    }
+
+    span {
+        font-weight: bold;
+        display: block;
+
+    }
+
+    .hidden {
+     display:none;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="container-sm">
+    <h1>Wating Tickets</h1>
+    <div class="row">
+        {% for ticket in wating %}
+        <div class="border border-dark rounded my-1">
+            <div class="row">
+                <div class="col-8"><a href="{% url 'ticket:ticket_detail' ticket.slug %}"
+                        style="text-decoration: none; color: black;">
+                        <h3>{{ticket.title}}</h3>
+                    </a></div>
+                <div class="col-4">
+                    <p style="float:right;">by <span style="display: inline;">{{ticket.author}}</span></p>
+                </div>
+            </div>
+            <div class="py-3"></div>
+            <em>Problema:</em>
+            <p class="pb-1">{{ticket.content}}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h2 onclick="toggler1();">Working on Tickets</h2>
+    <div id="working" class="row hidden">
+        {% for ticket in working_on_it %}
+        <div class="border border-dark rounded my-1">
+            <div class="row">
+                <div class="col-8"><a href="{% url 'ticket:ticket_detail' ticket.slug %}"
+                        style="text-decoration: none; color: black;">
+                        <h3>{{ticket.title}}</h3>
+                    </a></div>
+                <div class="col-4">
+                    <p style="float:right;">by <span style="display: inline;">{{ticket.author}}</span></p>
+                </div>
+            </div>
+            <div class="py-3"></div>
+            <em>Problema:</em>
+            <p class="pb-1">{{ticket.content}}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h2 onclick="toggler2();">Working on Tickets</h2>
+    <div id="wating" class="row hidden">
+        {% for ticket in finished %}
+        <div class="border border-dark rounded my-1">
+            <div class="row">
+                <div class="col-8"><a href="{% url 'ticket:ticket_detail' ticket.slug %}"
+                        style="text-decoration: none; color: black;">
+                        <h3>{{ticket.title}}</h3>
+                    </a></div>
+                <div class="col-4">
+                    <p style="float:right;">by <span style="display: inline;">{{ticket.author}}</span></p>
+                </div>
+            </div>
+            <div class="py-3"></div>
+            <em>Problema:</em>
+            <p class="pb-1">{{ticket.content}}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    function toggler1() {
+        var element = document.getElementById("working");
+        element.classList.toggle("hidden");  
+        }
+    function toggler2() {
+        var element = document.getElementById("wating");
+        element.classList.toggle("hidden");  
+        }
+    console.log('te salut');
+</script>
+{% endblock %}

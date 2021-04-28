@@ -12,7 +12,7 @@ class TicketForm(forms.ModelForm):
 
     class Meta:
         model = Ticket
-        fields = '__all__'
+        fields = ['title', 'slug', 'author', 'category', 'departament', 'content']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

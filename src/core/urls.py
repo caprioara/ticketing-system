@@ -11,7 +11,7 @@ urlpatterns = [
     path('account/', include('django.contrib.auth.urls')),
     path('', views.home, name='home'),
 
-    path('login/', auth_views.LoginView.as_view(template_name="registration/login.html",
+    path('login/', auth_views.LoginView.as_view(template_name="login.html",
                                                 authentication_form=UserLoginForm), name='login'),
 
     path('admin/', admin.site.urls),
